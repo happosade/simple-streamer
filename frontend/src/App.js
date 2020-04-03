@@ -1,13 +1,9 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 import Chat from './Chat'
+import Video from './Video'
 
 import { fetchMessages, sendMessage, receiveMessage } from './network'
-
-//const createMessage = (message) => {
-//  return { time: Date.now(), user: 'temmu', message }
-//}
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Video/>
         <Chat onSendMessage={this.onSendMessage.bind(this)} messages={this.state.messages} />
       </div>
     )

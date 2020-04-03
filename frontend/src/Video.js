@@ -1,9 +1,15 @@
 import React from 'react'
+import './Video.css'
+import dash from 'dashjs'
 
-const Video = ({messages, onSendMessage}) => {
+import settings from './settings.json'
+
+const {videoUrl} = settings
+
+const Video = () => {
     return (
         <div className='video'>
-            Olen video :D 
+            <video className='video' data-dashjs-player autoPlay src={videoUrl} controls></video>
         </div>
     )
 }

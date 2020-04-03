@@ -29,7 +29,9 @@
 .messages-container {
     bottom: 50px;
     height: 100%;
+    width: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
     position: absolute;
 }
 .messages-list { 

@@ -1,0 +1,10 @@
+.video {
+    height: calc(80vh - 50px);
+    width: 100%;
+    /*
+    min-height: 80vh - 50px;
+    max-width: 100%;
+    max-height: 80vh - 50px;
+    */
+    /*width: auto;*/
+}

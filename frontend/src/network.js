@@ -5,8 +5,6 @@ const {serverUrl} = settings
 
 const socket = io(serverUrl)
 
-const backlog = []
-
 socket.on('connect', function () {
     console.log('connected')
 });
