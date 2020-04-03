@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import Chat from './Chat'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { fetchMessages, sendMessage, receiveMessage } from './network'
+
+//const createMessage = (message) => {
+//  return { time: Date.now(), user: 'temmu', message }
+//}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { messages: [] };
+  }
+  componentDidMount() {
+    fetchMessages().then(messages=> {
+      this.setState({
+        messages
+      });
+      receiveMessage(this.onReceiveMessage.bind(this))
+    });
+  }
+  onReceiveMessage(message) {
+    console.log('receiving message', message)
+    this.setState({ messages: [...this.state.messages, message] })
+  }
+  onSendMessage(message) {
+    console.log('sending message', message)
+    sendMessage(message)
+  }
+  render() {
+    return (
+      <div className="App">
+        <Chat onSendMessage={this.onSendMessage.bind(this)} messages={this.state.messages} />
+      </div>
+    )
+  }
 }
 
 export default App;

@@ -16,10 +16,21 @@ db.serialize(() => {
   db.run(createTable)
 })
 
-const newestMessagesQuery = 'SELECT rowid as id, submit_time, submitter_nick, message, ORDER BY date(submit_time) DSC Limit 100'
-function getNewestMessages(cb) {
-  db.get(oldestPoemQuery, (err, row) => {
-    cb(err, row)
+const newestMessagesQuery = 'SELECT submit_time, \
+                              submitter_nick, \
+                              message \
+                              FROM messages \
+                              ORDER BY date(submit_time) DESC Limit (?)'
+
+function getNewestMessages(count) {
+  return new Promise((res, rej) => {
+    db.all(newestMessagesQuery, [count], (err, rows) => {
+      if (err) {
+        console.log('erred', err)
+        return rej(err)
+      }
+      res(rows)
+    })
   })
 }
 
@@ -27,7 +38,12 @@ const insertMessageQuery = 'INSERT INTO messages \
                          (submit_time, submitter_nick, message) \
                          VALUES (?, ?, ?)'
 function insertMessage(submitter_nick, message, cb) {
+  console.log('inserting', submitter_nick, message)
   db.run(insertMessageQuery, Date.now(), submitter_nick, message, (err) => {
     cb(err)
   })
+}
+
+module.exports = {
+  getNewestMessages, insertMessage
 }
