@@ -1,4 +1,4 @@
 {
-    "serverUrl": "http://localhost:9876",
+    "serverUrl": "http://prototyping.xyz:9876",
     "videoUrl": "http://ug.prototyping.xyz/dash/dersb.mpd"
 }
