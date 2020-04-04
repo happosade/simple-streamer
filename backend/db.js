@@ -20,11 +20,12 @@ const newestMessagesQuery = 'SELECT submit_time, \
                               submitter_nick, \
                               message \
                               FROM messages \
-                              ORDER BY date(submit_time) ASC Limit (?)'
+                              ORDER BY submit_time DESC \
+                              LIMIT (?)'
 
 function getNewestMessages(count) {
   return new Promise((res, rej) => {
-    db.all(newestMessagesQuery, [count], (err, rows) => {
+    db.all(newestMessagesQuery, count, (err, rows) => {
       if (err) {
         console.log('erred', err)
         return rej(err)

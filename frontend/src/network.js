@@ -30,7 +30,7 @@ function fetchMessages() {
     return new Promise((resolve, reject) => {
         socket.on('backlog', serverBacklog => {
             console.log('got backlog', serverBacklog)
-            resolve(serverBacklog)
+            resolve(serverBacklog.reverse())
         })
         socket.emit('getbacklog')
     })
