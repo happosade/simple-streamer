@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import './Chat.css'
-import ScrollToBottom from 'react-scroll-to-bottom'
 
 const ListElem = ({time, user, message}) => {
     const date = new Date(time)
@@ -22,27 +21,13 @@ class List extends React.Component {
         this.state = {first: true}
     }
     componentDidMount() {
-        if (this.state.first) {
-            //useEffect(() => {
-            console.log('scrollaa nyt')
-            this.scrollTarget.scrollIntoView(true)
-            setTimeout(() => {
-                console.log('enta nyt?')
-                this.scrollTarget.scrollIntoView(true)
-            }, 500)
-            //})
-        }
+        this.scrollTarget.scrollIntoView(true)
     }
     componentDidUpdate() {
         this.scrollTarget.scrollIntoView(true)
     }
     render() {
         const { elements } = this.props
-        console.log('elements', elements)
-        //const scrollToBottom = useScrollToBottom();
-        //setTimeout(scrollToBottom)
-                        //<ScrollToBottom mode="bottom">
-                        //</ScrollToBottom>
         return (
             <div className='messages-container'>
                     <ul className='messages-list'>
@@ -63,17 +48,12 @@ class Input extends React.Component {
         this.onKeyDown = this.onKeyDown.bind(this);
     }
     handleChange(event) { this.setState({ value: event.target.value }); }
-    typing() {
-        console.log('inputting')
-    }
     onKeyDown(e) {
         if (e.key === 'Enter') {
-            console.log('do validate');
             this.onSubmit()
           }
     }
     onSubmit() {
-        console.log('submitting')
         const {onSendMessage} = this.props
         onSendMessage(this.state.value)
         this.setState({value: ''})
@@ -91,7 +71,6 @@ class Input extends React.Component {
 
 const Chat = (props) => {
     const {messages, onSendMessage} = props
-    //const List = autoscroll(Input)
     return (
         <div className='chat'>
             <List {...props} elements={messages}/>
@@ -100,8 +79,4 @@ const Chat = (props) => {
     )
 }
 
-
 export default Chat
-
-//ReactDOM.render(<InfiniteList/>,
-//        document.getElementById('infinite-window-example'));

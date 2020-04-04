@@ -23,7 +23,6 @@ const user = prompt('Name pls')
 socket.emit('user', user)
 
 function sendMessage(message) {
-    console.log('sending msg', message)
     socket.emit('chat_message', message)
 }
 
@@ -39,7 +38,6 @@ function fetchMessages() {
 
 function receiveMessage(handler) {
     socket.on('chat_message', message => {
-        console.log('received message')
         handler(message)
     })
 }

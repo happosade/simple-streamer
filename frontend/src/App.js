@@ -19,11 +19,9 @@ class App extends React.Component {
     });
   }
   onReceiveMessage(message) {
-    console.log('receiving message', message)
     this.setState({ messages: [...this.state.messages, message] })
   }
   onSendMessage(message) {
-    console.log('sending message', message)
     sendMessage(message)
   }
   render() {
