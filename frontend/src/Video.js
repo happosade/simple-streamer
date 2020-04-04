@@ -4,14 +4,30 @@ import dash from 'dashjs'
 
 import settings from './settings.json'
 
-const {videoUrl} = settings
+import VideoPlayer from 'react-video-js-player'
 
-const Video = () => {
-    return (
-        <div className='video'>
-            <video className='video' data-dashjs-player muted autoPlay src={videoUrl} controls></video>
-        </div>
-    )
+const { videoUrl } = settings
+
+class Video extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+    }
+    render() {
+        const state = {
+            src: {src: videoUrl, type: 'application/dash+xml'},
+            poster: "//vjs.zencdn.net/v/oceans.png"
+        }
+        return (
+            <VideoPlayer
+                className='video'
+                controls={true}
+                src={state.src}
+            />
+        )
+
+    }
 }
 
 export default Video
