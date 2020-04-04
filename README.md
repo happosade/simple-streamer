@@ -1,6 +1,8 @@
 # simple-streamer
 Simple video streamer + chat
 
+Demo: http://ug.prototyping.xyz/
+
 TODO:
 - Dockerize
 - Add a NGINX RTMP container to host the whole thing and offer the streaming endpoint
