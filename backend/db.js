@@ -20,7 +20,7 @@ const newestMessagesQuery = 'SELECT submit_time, \
                               submitter_nick, \
                               message \
                               FROM messages \
-                              ORDER BY date(submit_time) DESC Limit (?)'
+                              ORDER BY date(submit_time) ASC Limit (?)'
 
 function getNewestMessages(count) {
   return new Promise((res, rej) => {
