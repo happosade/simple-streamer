@@ -40,6 +40,14 @@ function receiveMessage(handler) {
     socket.on('chat_message', message => {
         handler(message)
     })
+    socket.on('joined', ({user, connected}) => {
+        console.log('joined')
+        handler({time: Date.now(), user: 'server', message: `user ${user} joined --- ${connected} users online`})
+    })
+    socket.on('left', ({user, connected}) => {
+        console.log('left')
+        handler({time: Date.now(), user: 'server', message: `user ${user} left --- ${connected} users online`})
+    })
 }
 
 export {

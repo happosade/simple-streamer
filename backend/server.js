@@ -14,20 +14,22 @@ const {getNewestMessages, insertMessage} = require('./db')
 
 const backlogSize = 100
 
-const initMessage = [{ time: Date.now(), user: 'temmu', message: 'soosit' }]
+const initMessage = [{ time: Date.now(), user: 'server', message: 'channel created' }]
 io.sockets.on('connection', function(socket) {
     socket.on('getbacklog', () => {
         getNewestMessages(100).then((results)=> {
-            const clientResults = results.map(({submit_time, submitter_nick, message}) => ({
+            let clientResults = results.map(({submit_time, submitter_nick, message}) => ({
                 time: submit_time,
                 user: submitter_nick,
                 message
             }))
             console.log('db gave', clientResults)
+            console.log('len', clientResults.length)
             if (clientResults.length == 0) {
-                results = initMessage
+                clientResults = initMessage
             }
             socket.emit('backlog', clientResults)
+            socket.emit('joined', {user: socket.user, connected: socket.client.conn.server.clientsCount})
         })
     })
     socket.on('user', function (user) {
@@ -40,11 +42,11 @@ io.sockets.on('connection', function(socket) {
             user = 'anonymous' + ~~(Math.random() * 10000)
         }
         socket.user = user
-        io.emit('joined', user)
+        io.emit('joined', {user: socket.user, connected: socket.client.conn.server.clientsCount})
     })
 
     socket.on('disconnect', function() {
-        io.emit('left', socket.user)
+        io.emit('left', {user: socket.user, connected: socket.client.conn.server.clientsCount})
     })
 
     socket.on('chat_message', function(message) {

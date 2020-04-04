@@ -1,6 +1,5 @@
 import React from 'react'
 import './Video.css'
-import dash from 'dashjs'
 
 import settings from './settings.json'
 
