@@ -9,7 +9,7 @@ const {videoUrl} = settings
 const Video = () => {
     return (
         <div className='video'>
-            <video className='video' data-dashjs-player autoPlay src={videoUrl} controls></video>
+            <video className='video' data-dashjs-player muted autoPlay src={videoUrl} controls></video>
         </div>
     )
 }
