@@ -15,11 +15,13 @@ class Video extends React.Component {
     }
     onPlayerReady(player) {
         player.muted(true)
+        player.load()
         player.play()
     }
     render() {
         const state = {
-            src: {src: videoUrl, type: 'application/dash+xml'},
+            //src: {src: videoUrl, type: 'application/dash+xml'},
+            src: {src: videoUrl, type: 'application/x-mpegURL'},
             poster: "//vjs.zencdn.net/v/oceans.png"
         }
         return (
