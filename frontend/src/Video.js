@@ -14,6 +14,10 @@ class Video extends React.Component {
     }
     componentDidMount() {
     }
+    onPlayerReady(player) {
+        player.muted(true)
+        player.play()
+    }
     render() {
         const state = {
             src: {src: videoUrl, type: 'application/dash+xml'},
@@ -24,6 +28,7 @@ class Video extends React.Component {
                 className='video'
                 controls={true}
                 src={state.src}
+                onReady={this.onPlayerReady.bind(this)}
             />
         )
 
