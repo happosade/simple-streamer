@@ -4,7 +4,7 @@ import './Chat.css'
 const ListElem = ({time, user, message}) => {
     const date = new Date(time)
     const month = ((date.getMonth()+1)+'').padStart(2,'0')
-    const day = ((date.getDay())+'').padStart(2,'0')
+    const day = ((date.getDate())+'').padStart(2,'0')
     const hour = ((date.getHours())+'').padStart(2,'0')
     const minute = ((date.getMinutes())+'').padStart(2,'0')
     const year = ((date.getFullYear())+'').padStart(2,'0')
