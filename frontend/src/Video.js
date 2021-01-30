@@ -10,10 +10,10 @@ const { videoUrl } = settings
 class Video extends React.Component {
     constructor(props) {
         super(props);
-        window.onresize = () => {
+        window.addEventListener("resize", () => {
             let player = document.getElementsByClassName('video-js')[0]
-            player.style.height = window.innerHeight*0.8; 
-        }
+            player.setAttribute("style", `height:${window.innerHeight*0.7}px;`)
+        })
     }
     componentDidMount() {
     }

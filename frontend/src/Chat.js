@@ -46,11 +46,10 @@ class Input extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.onSubmit.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
-        window.onresize = () => {
+        window.addEventListener("resize",() => {
             let chat = document.getElementsByClassName('chat')[0]
-            chat.style.top = window.innerHeight*0.8;
-            chat.style.height = window.innerHeight*0.2; 
-        }
+            chat.setAttribute("style", `top:${window.innerHeight*0.7}px;height:${window.innerHeight*0.3}px;`)
+        })
     }
     handleChange(event) { this.setState({ value: event.target.value }); }
     onKeyDown(e) {
