@@ -58,6 +58,7 @@ class Input extends React.Component {
           }
     }
     onSubmit() {
+        if (this.state.value === '') return
         const {onSendMessage} = this.props
         onSendMessage(this.state.value)
         this.setState({value: ''})
