@@ -1,9 +1,7 @@
 import io from 'socket.io-client'
 import settings from './settings.json'
 
-const {serverUrl} = settings
-
-const socket = io(serverUrl)
+const socket = io()
 
 socket.on('connect', function () {
     console.log('connected')

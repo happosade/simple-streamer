@@ -1,0 +1,14 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 80:80
+      - 443:443
+      - 1935:1935
+    depends_on:
+      - backend
+  backend:
+    build: ./backend/
+    expose:
+      - "9876"

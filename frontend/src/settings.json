@@ -1,4 +1,3 @@
 {
-    "serverUrl": "http://prototyping.xyz:9876",
-    "videoUrl": "http://ug.prototyping.xyz/hls/dersb.m3u8"
+    "videoUrl": "/hls/stream.m3u8"
 }
