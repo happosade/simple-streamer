@@ -49,3 +49,12 @@
 }
 .messages-list li { padding: 5px 10px; }
 .messages-list li:nth-child(odd) { background: #eee; }
+
+@media (max-width: 600px) {
+    .chat-input {
+        width: 80%;
+    }
+    .chat-button {
+        width: 15%;
+    }
+  }
