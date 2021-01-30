@@ -46,6 +46,10 @@ class Input extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.onSubmit.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
+        window.addEventListener("resize",() => {
+            let chat = document.getElementsByClassName('chat')[0]
+            chat.setAttribute("style", `top:${window.innerHeight*0.7}px;height:${window.innerHeight*0.3}px;`)
+        })
     }
     handleChange(event) { this.setState({ value: event.target.value }); }
     onKeyDown(e) {
@@ -54,6 +58,7 @@ class Input extends React.Component {
           }
     }
     onSubmit() {
+        if (this.state.value === '') return
         const {onSendMessage} = this.props
         onSendMessage(this.state.value)
         this.setState({value: ''})
@@ -64,7 +69,7 @@ class Input extends React.Component {
             onChange={this.handleChange}
              value={this.state.value} 
              className='chat-input' id="txt" autoComplete="off" autoFocus="on" onInput={this.typing} placeholder="type your message here..." />
-            <button className='chat-button'>Send</button>
+            <button onClick={this.handleSubmit} className='chat-button'>Send</button>
         </div>
     }
 }
@@ -72,7 +77,7 @@ class Input extends React.Component {
 const Chat = (props) => {
     const {messages, onSendMessage} = props
     return (
-        <div className='chat'>
+        <div className='chat' style={{top: window.innerHeight*0.8, height: window.innerHeight*0.2}}>
             <List {...props} elements={messages}/>
             <Input onSendMessage={onSendMessage}/>
         </div>

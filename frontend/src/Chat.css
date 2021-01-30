@@ -1,6 +1,6 @@
 .chat {
-    top: 80vh;
-    height: 20vh;
+    /* top: 80vh;
+    height: 20vh; */
     bottom: 0;
     position: fixed;
     width: 100%;
@@ -25,7 +25,13 @@
     width: 85%;
     margin-right: .5%; 
 }
-.chat-button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; margin-left: 2%; }
+.chat-button {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: none;
+    padding: 10px;
+    margin-left: 2%;
+}
 .messages-container {
     bottom: 50px;
     height: 100%;
@@ -43,3 +49,12 @@
 }
 .messages-list li { padding: 5px 10px; }
 .messages-list li:nth-child(odd) { background: #eee; }
+
+@media (max-width: 600px) {
+    .chat-input {
+        width: 80%;
+    }
+    .chat-button {
+        width: 15%;
+    }
+  }
