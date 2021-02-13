@@ -8,7 +8,8 @@ const ListElem = ({time, user, message}) => {
     const hour = ((date.getHours())+'').padStart(2,'0')
     const minute = ((date.getMinutes())+'').padStart(2,'0')
     const year = ((date.getFullYear())+'').padStart(2,'0')
-    let formattedTime = `${day}/${month}/${year} ${hour}:${minute}`
+    //let formattedTime = `${day}/${month}/${year} ${hour}:${minute}`
+    let formattedTime = `${hour}:${minute}`
 
     return <li >
         {formattedTime}   {user}: {message}

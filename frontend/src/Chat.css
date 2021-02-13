@@ -4,6 +4,8 @@
     bottom: 0;
     position: fixed;
     width: 100%;
+    flex-direction: column;
+    display: flex;
 }
 .chat-input-container { 
     height: 50px;
@@ -34,11 +36,10 @@
 }
 .messages-container {
     bottom: 50px;
-    height: 100%;
+    flex-grow: 1;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    position: absolute;
 }
 .messages-list { 
     list-style-type: none;
