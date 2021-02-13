@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import settings from './settings.json'
+//import settings from './settings.json'
 
 const socket = io()
 
@@ -34,22 +34,24 @@ function fetchMessages() {
     })
 }
 
-function receiveMessage(handler) {
+function registerMessageHandlers(messageHandler, userCountHandler) {
     socket.on('chat_message', message => {
-        handler(message)
+        messageHandler(message)
     })
     socket.on('joined', ({user, connected}) => {
         console.log('joined')
-        handler({time: Date.now(), user: 'server', message: `user ${user} joined --- ${connected} users online`})
+        messageHandler({time: Date.now(), user: 'server', message: `user ${user} joined`})
+        userCountHandler(connected)
     })
     socket.on('left', ({user, connected}) => {
         console.log('left')
-        handler({time: Date.now(), user: 'server', message: `user ${user} left --- ${connected} users online`})
+        messageHandler({time: Date.now(), user: 'server', message: `user ${user} left`})
+        userCountHandler(connected)
     })
 }
 
 export {
     fetchMessages,
     sendMessage,
-    receiveMessage,
+    registerMessageHandlers,
 }

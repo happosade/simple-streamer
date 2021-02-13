@@ -1,0 +1,22 @@
+.usercount {
+    z-index: 15;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: grey;
+    color: #ffffff;
+    font-size: 2em;
+    padding: 3px 10px 3px 10px;
+}
+
+.usercount img, .usercount span {
+    float: left;
+}
+
+.usercount span {
+    margin-top: 2px;
+}
+
+.usercount img {
+    margin-right: 7px;
+}
