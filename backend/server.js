@@ -29,7 +29,7 @@ io.sockets.on('connection', function(socket) {
                 clientResults = initMessage
             }
             socket.emit('backlog', clientResults)
-            socket.emit('joined', {user: socket.user, connected: socket.client.conn.server.clientsCount})
+            //socket.emit('joined', {user: socket.user, connected: socket.client.conn.server.clientsCount})
         })
     })
     socket.on('user', function (user) {
@@ -46,7 +46,7 @@ io.sockets.on('connection', function(socket) {
     })
 
     socket.on('disconnect', function() {
-        io.emit('left', {user: socket.user, connected: socket.client.conn.server.clientsCount})
+        //io.emit('left', {user: socket.user, connected: socket.client.conn.server.clientsCount})
     })
 
     socket.on('chat_message', function(message) {
